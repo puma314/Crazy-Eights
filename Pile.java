@@ -15,6 +15,38 @@ public class Pile
 		cards = new ArrayList<Card>();
 	}
 	
+	
+	//makes full deck
+	Pile(String fulldeck)
+	{
+		
+		cards = new ArrayList<Card>();
+		
+		String[] suits = new String[4];
+		suits[0] = "HEARTS";
+		suits[1] = "DIAMONDS";
+		suits[2] = "CLUBS";
+		suits[3] = "SPADES";
+		
+		for(int n=0; n<13; n++)
+		{
+			for(int m=0; m<4; m++)
+			{
+				cards.add(new Card(suits[m], n));
+			}
+			
+		}
+	}
+	
+	public Card get(int i)
+	{
+		return cards.get(i);
+	}
+	public int size()
+	{
+		return cards.size();
+	}
+	
 	public void addtoBottom (Card card)
 	{
 		cards.add(card);

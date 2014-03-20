@@ -35,8 +35,8 @@ public class main
 			setofplayers[j] = humanplayer;
 		}
 		
-		
-		Pile drawingpile = new Pile();
+		String fulldeck = "";
+		Pile drawingpile = new Pile(fulldeck);
 		
 		Pile discardpile = new Pile();
 		
@@ -62,13 +62,25 @@ public class main
 		System.out.println("The top card in the discard pile is: " + discardpile.topCard());
 		
 		
-		
-		
-		
-		//Do same thing with human except with prompts
-		
-		//Also need case for if drawing pile is empty, just proceed without drawing.
-		//If all players have drawn in a row, then game stops.
+		int playernum =0;
+		{
+			setofplayers[playernum%7].makemove();
+			playernum++;
+			
+			for(int i=0; i < setofplayers.length; i++)
+			{
+				if(setofplayers[i].hand.size() == 0)
+				{
+					System.out.print("Player" + i + "has won!");
+					break;
+				
+				}
+			}
+			
+			
+		}while(drawingpile.size() > 0);
+	
+		System.out.println("The drawing pile is empty. The game has to stop.");
 		
 		//end game when 1 person had hand = 0 
 		//method: setofplayers.endgame() and then have while loop while false

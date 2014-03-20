@@ -19,43 +19,44 @@ public class Player
 		hand.remove(card);
 	}
 	
-	public void turn(Pile drawingpile, Pile discardpile)
+	public boolean turn(Pile drawingpile, Pile discardpile, Card card)
 	{
-		int move=0; //move changes to 1 when move is made
-		if (discardpile.topCard().number != 8)
-		{
+		//case of if top card is 8 is implicitly taken care of.
+			if(card.suit.equals(discardpile.topCard().suit) || card.number == discardpile.topCard().number)
+			{
+				hand.remove(card);
+				Card addcard = card;
+				
+				//clause if card added to discard has number 8
+				if(card.number == 8)
+				{
+					String nomsuit = ""; //readuserinput, check if valid or not.
+					addcard = new Card(nomsuit, 8);
+					//output original card and output nominated suit if necesary
+					
+					
+				}
+				
+				discardpile.addtoTop(addcard);
+				
+				return true;
+			}
 			
-		}
-		
-		else 
-		{
-			
-			
-		}
-		
-		if(move == 0)
-		{
-			this.addtoHand(drawingpile.topCard());
-			drawingpile.draw();
-	
-		}
+			else 
+				return false;
+
 	}
 	
+	public void emptyturn (Pile drawingpile, Pile discardpile)
+	{
+		hand.addtoTop(drawingpile.topCard());
+		drawingpile.draw();
+	}
 	
-	//if(discardpile.top().number == 8)
-
-	
-	//if(discardpile.topcard().number != 8)
-	//{
-		//interate through hand and first card that matches suit or number of discardpile.topcard(), play that card
-		//keep track of move made
-		
-	//	if(move == false )
-		//{
-			//iterate through deck and play 8 if possible, nominate suit
-			//change turn objects suit
-		//}
-		
+	public void makemove()
+	{
+		return;
+	}
 
 
 }
