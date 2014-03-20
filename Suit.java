@@ -1,13 +1,10 @@
 public class Suit
 {
-	public static String[] shape;
+	public static final String clubs = "Clubs";
+	public static final String diamonds = "Diamonds";
+	public static final String hearts = "Hearts";
+	public static final String spades = "Spades";
 	
-	Suit()
-	{
-	shape[0] = "Clubs";
-	shape[1] = "Hearts";
-	shape[2] = "Spades";
-	shape[3] = "Diamonds";
-	}
+	
 	
 }

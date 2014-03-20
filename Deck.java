@@ -12,7 +12,7 @@ public class Deck
 			for(int m=0; m<4; m++)
 			{
 				CardsinDeck[n].number = (n+1);
-				CardsinDeck[n].suit = Suit.shape[m];
+				//CardsinDeck[n].suit = Suit.shape[m];
 			}
 			
 		}
@@ -21,7 +21,7 @@ public class Deck
 	//Ace is low (regarded as 1), face cards: J=11, Q=12, K=13
 	
 	
-	public Deck Shuffle(Deck origdeck)
+	public Deck Shuffle(Deck origdecks)
 	{
 		Deck shuffledeck = new Deck();
 		

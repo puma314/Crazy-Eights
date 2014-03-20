@@ -12,13 +12,15 @@ public class Card
 		
 	}
 	
-	public boolean Equals(Card card1, Card card2)
+	public boolean equals(Card card1, Card card2)
 	{
 		if (card1.suit.equals(card2.suit) && card1.number == card2.number)
 			return true;
 		
 		return false;
 	}
+	
+	//implement tostring method
 	
 	
 }
