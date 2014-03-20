@@ -1,4 +1,0 @@
-Crazy-Eights
-============
-
-Card Game
