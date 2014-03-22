@@ -1,3 +1,4 @@
+//class tested and works.
 public class Card
 {
 	
@@ -12,15 +13,22 @@ public class Card
 		
 	}
 	
-	public boolean equals(Card card1, Card card2)
+	//function works
+	public boolean equals(Card card1)
 	{
-		if (card1.suit.equals(card2.suit) && card1.number == card2.number)
+		if (suit.equals(card1.suit) && number == card1.number)
 			return true;
 		
 		return false;
 	}
 	
-	//implement tostring method
+	//function works
+	public String toString()
+	{
+		return (number + " of " + suit );
+		
+		
+	}
 	
 	
 }

@@ -1,8 +1,5 @@
 import java.util.*;
 
-//Drawing pile and discard pile are both types of piles. 
-//convention is that 0 is at top of pile and last index is at bottom.
-//Deck is also a type of pile.
 
 public class Pile 
 
@@ -10,14 +7,121 @@ public class Pile
 	List<Card> cards; //array of cards
 	
 	
+	//works
 	Pile()
 	{
 		cards = new ArrayList<Card>();
 	}
 	
+	//works
+	public Card get(int i)
+	{
+		if(i < 0 || i >= cards.size())
+		{
+			Card temp = new Card("0",0);
+			return temp;
+		}
+		
+		return cards.get(i);
+	}
 	
-	//makes full deck
-	Pile(String fulldeck)
+	//works
+	public int size()
+	{
+		return cards.size();
+	}
+	
+	//works
+	public void addtoBottom (Card card)
+	{
+		cards.add(card);
+	}
+	
+	//works
+	public void addtoTop (Card card)
+	{
+		cards.add(0,card);
+	}
+	
+	//works
+	public Card topCard()
+	{
+		
+		if(cards.isEmpty())
+		{
+			Card temp = new Card("0",0);
+			return temp;
+		}
+		
+	
+			return cards.get(0);
+		
+	}
+	
+	public Card draw() //default draws top card
+	
+	{
+		if(cards.isEmpty())
+		{
+			Card temp = new Card("0",0);
+			return temp;
+		}
+		
+		
+		Card temp = cards.get(0);
+		cards.remove(0);
+		
+		return temp;	
+		
+	}
+	
+	public int indexOf(Card card) 
+	{
+		System.out.println("etnered indexof");
+	    for (int i=0; i< cards.size(); i++)
+	    {
+	    	if (card.equals(cards.get(i)))
+	    		return i;
+	    }
+	    
+	    System.out.println("Will return -1");
+	    
+	    return -1;
+	}
+	
+	public void remove(Card card)
+	{
+		System.out.println("Entered remove");
+		System.out.println(cards.indexOf(card));
+		cards.remove(cards.indexOf(card));
+	}
+	
+
+	public void shuffle()
+	{
+		List<Card> temp = new ArrayList<Card>();
+		
+		//System.out.println("Cards size is:" + cards.size());
+		
+		int cardssize = cards.size();
+		
+		for(int i=0; i<cardssize; i++)
+		{
+			
+			int index = (int)(Math.random()*cards.size());
+			//System.out.println(index);
+			temp.add(cards.get(index));
+			cards.remove(index);
+			
+			//System.out.println("end of for loop it");
+			
+		}
+		
+		cards = temp;	
+		
+	}
+	
+	Pile(String fulldeck) //makes full deck
 	{
 		
 		cards = new ArrayList<Card>();
@@ -38,75 +142,21 @@ public class Pile
 		}
 	}
 	
-	public Card get(int i)
+	public String toString()
 	{
-		return cards.get(i);
-	}
-	public int size()
-	{
-		return cards.size();
-	}
-	
-	public void addtoBottom (Card card)
-	{
-		cards.add(card);
-	}
-	
-	public void addtoTop (Card card)
-	{
-		cards.add(0,card);
-	}
-	
-	
-	
-	public Card draw() //default draws top card
-	
-	{
-		Card temp = cards.get(0);
-		cards.remove(0);
+		String temp = "";
+		for(int i=0; i<cards.size(); i++)
+			temp = temp + cards.get(i) + "\n";
 		
 		return temp;
-		
-		
 	}
+
 	
-	public int indexOf(Card card) 
-	{
-	    for (int i=0; i< cards.size(); i++)
-	    {
-	    	if (card.equals(cards.get(i)))
-	    		return i;
-	    }
-	    
-	    return -1;
-	}
 	
-	public void remove(Card card)
-	{
-		cards.remove(cards.indexOf(card));
-	}
+	
 	
 
-	public Card topCard()
-	{
-		return cards.get(0);
-	}
 	
-	public void shuffle()
-	{
-		List<Card> temp = new ArrayList<Card>();
-		
-		for(int i=0; i<cards.size(); i++)
-		{
-			
-			int index = (int)(Math.random()*cards.size());
-			temp.add(cards.get(index));
-			cards.remove(index);
-		}
-		
-		cards = temp;	
-		
-	}
 	
 	
 	

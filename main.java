@@ -7,18 +7,57 @@ public class main
 	public static void main(String[] args)
 	{
 		
-		System.out.println("Hello, welcome to the card game Crazy Eights!");
+		
+		//test for card class
+		Card test = new Card("SPADES", 13);
+		Card test1 = new Card("SPADES", 12);
+		Card test2 = new Card("SPADES", 10);
+		
+
+		Pile drawingpile = new Pile("full");
+		Pile discardpile = new Pile();
+		
+		Player testplayer = new Player();
+		
+		testplayer.addtoHand(test);
+		testplayer.addtoHand(test1);
+		testplayer.addtoHand(test2);
+		
+		System.out.println(testplayer);
+		
+		drawingpile.shuffle();
+		discardpile.addtoTop(drawingpile.topCard());
+		drawingpile.draw();
+		
+		Card topcard = new Card("DIAMONDS", 9);
+		
+		discardpile.addtoTop(topcard);
+		testplayer.addtoHand(topcard);
+		
+		
+		System.out.println("The top card in the discard pile is: " + discardpile.topCard());
+		
+		
+		Card movecard = new Card("DIAMONDS", 9);
+		testplayer.turn(drawingpile, discardpile, movecard);
+		
+		System.out.print(discardpile + " \n // \n");
+		System.out.print(drawingpile + " \n // \n");
+		System.out.print(testplayer + " \n // \n");
+		
+		
+		/*System.out.println("Hello, welcome to the card game Crazy Eights!");
 		
 		int numhplayers=0;
 		System.out.println("How many human players do you want? Enter a number"); 
+		//get user input
+		numhplayers = 3;
 		
 		int numcplayers=0;
 		System.out.println("How many computer players do you want? Enter a number");
+		numcplayers = 3;
 		
-		int totalplayers = numhplayers + numcplayers;
-		//If total number of players > 10 then throw error. If the total number of plays < 2 throw error. Prompt for new number. 
-		
-		//SetofPlayers setofplayers = new SetofPlayers();
+		int totalplayers = numhplayers + numcplayers;		
 		
 		Player[] setofplayers = new Player[totalplayers];
 		
@@ -91,7 +130,7 @@ public class main
 		
 		
 		
-		
+		*/
 		
 		
 		
