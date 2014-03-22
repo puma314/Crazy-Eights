@@ -1,5 +1,7 @@
 import java.lang.Math;
 import java.util.*;
+import java.util.Scanner;
+
 
 public class main
 {
@@ -7,7 +9,7 @@ public class main
 	public static void main(String[] args)
 	{
 		
-		
+		/*
 		//test for card class
 		Card test = new Card("SPADES", 13);
 		Card test1 = new Card("SPADES", 12);
@@ -43,46 +45,58 @@ public class main
 		
 		System.out.print(discardpile + " \n // \n");
 		System.out.print(drawingpile + " \n // \n");
-		System.out.print(testplayer + " \n // \n");
+		System.out.print(testplayer + " \n // \n"); */
 		
 		
-		/*System.out.println("Hello, welcome to the card game Crazy Eights!");
+		
+		Scanner sc = new Scanner(System.in);
+		Scanner scstring = new Scanner(System.in);
+   
+		System.out.println("Hello, welcome to the card game Crazy Eights!");	
 		
 		int numhplayers=0;
-		System.out.println("How many human players do you want? Enter a number"); 
+		System.out.println("How many human players do you want? Enter a number: "); 
 		//get user input
-		numhplayers = 3;
+		numhplayers = sc.nextInt();
 		
 		int numcplayers=0;
-		System.out.println("How many computer players do you want? Enter a number");
-		numcplayers = 3;
+		System.out.println("How many computer players do you want? Enter a number: ");
+		//get user input
+		numcplayers = sc.nextInt();
 		
 		int totalplayers = numhplayers + numcplayers;		
+		//totalplayers cannot be > 10
 		
 		Player[] setofplayers = new Player[totalplayers];
 		
 		for(int i=0; i<numcplayers; i++)
 		{
-			CPlayer compplayer = new CPlayer();
+			String name = "Computer Player number " + (i+1);
+			CPlayer compplayer = new CPlayer(name);
 			setofplayers[i] = compplayer;
 			
 		}
 		
 		for(int j=numcplayers; j<totalplayers; j++)
 		{
-			HPlayer humanplayer = new HPlayer();
+			System.out.println("Enter the name of human player number " + (j-numcplayers + 1));
+			String name = scstring.nextLine();		
+			HPlayer humanplayer = new HPlayer(name);
 			setofplayers[j] = humanplayer;
 		}
 		
-		String fulldeck = "";
-		Pile drawingpile = new Pile(fulldeck);
+		System.out.println("This is the order the players will go in from first to last: ");
+		for(int i=0; i<totalplayers; i++)
+		{
+			System.out.println(setofplayers[i].name);
+		}
 		
+		Pile drawingpile = new Pile("fulldeck");
+		//System.out.print(drawingpile);
 		Pile discardpile = new Pile();
 		
 		drawingpile.shuffle();
 		
-		
-		//if totalplayers > 2	
 		//Gives each player 5 cards
 		for(int i=0; i<5*totalplayers; i++)
 		{
@@ -91,46 +105,43 @@ public class main
 			drawingpile.draw();
 		}
 		
-		//if totalplayers = 2
-		//implement code to deal with this annoyance.
-		
-		
+		//Adds the top card of the drawing pile to the discard pile
 		discardpile.addtoTop(drawingpile.topCard());
 		drawingpile.draw();
 		
-		System.out.println("The top card in the discard pile is: " + discardpile.topCard());
+		System.out.println("The top card in the discard pile is: " + discardpile.topCard() + "\n");	
 		
-		
-		int playernum =0;
+		/*for(int i=0; i<totalplayers; i++)
 		{
-			setofplayers[playernum%7].makemove();
+			System.out.println(setofplayers[i]);
+		}*/
+		
+		int playernum = 0;
+		
+		do {
+			
+			System.out.println("It is " + setofplayers[playernum%totalplayers].name + "'s move.");
+			System.out.println("The top card in the discard pile is: " + discardpile.topCard());
+			System.out.println(setofplayers[playernum%totalplayers]);
+			setofplayers[playernum%totalplayers].makemove(drawingpile, discardpile);
 			playernum++;
 			
 			for(int i=0; i < setofplayers.length; i++)
 			{
-				if(setofplayers[i].hand.size() == 0)
+				if(setofplayers[i].hand.size() == 0) //end game when 1 person had hand = 0 	
 				{
-					System.out.print("Player" + i + "has won!");
-					break;
+					System.out.print("Player " + setofplayers[i].name + " has won!");
+					return;
 				
 				}
 			}
 			
-			
+			//System.out.println(drawingpile.size());
 		}while(drawingpile.size() > 0);
 	
-		System.out.println("The drawing pile is empty. The game has to stop.");
+		System.out.println("The drawing pile is empty. The game is over.");
 		
-		//end game when 1 person had hand = 0 
-		//method: setofplayers.endgame() and then have while loop while false
-		
-		
-		
-		
-		
-		
-		
-		*/
+					
 		
 		
 		

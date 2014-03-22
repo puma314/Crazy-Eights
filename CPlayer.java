@@ -1,9 +1,14 @@
 
 public class CPlayer extends Player
 {
+	CPlayer(String name)
+	{
+		super(name);
+	}
 	public void makemove(Pile drawingpile, Pile discardpile)
 	{
-
+		
+		//2System.out.println("Enetered computer makemove");
 		
 		int move=0; //move changes to 1 when move is made
 		int index = -1;
@@ -21,6 +26,9 @@ public class CPlayer extends Player
 		//if index still = -1
 		
 		emptyturn(drawingpile, discardpile);
+		
+		
+		return;
 			
 	
 	}

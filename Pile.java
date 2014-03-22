@@ -77,23 +77,30 @@ public class Pile
 	
 	public int indexOf(Card card) 
 	{
-		System.out.println("etnered indexof");
+		//System.out.println("etnered indexof");
 	    for (int i=0; i< cards.size(); i++)
 	    {
 	    	if (card.equals(cards.get(i)))
 	    		return i;
 	    }
 	    
-	    System.out.println("Will return -1");
+	   //System.out.println("Will return -1");
 	    
 	    return -1;
 	}
 	
 	public void remove(Card card)
 	{
-		System.out.println("Entered remove");
-		System.out.println(cards.indexOf(card));
-		cards.remove(cards.indexOf(card));
+		//System.out.println("Entered remove");
+		indexOf(card);
+		//System.out.println("After caalling index of");
+		//System.out.println(indexOf(card));
+		cards.remove(indexOf(card));
+	}
+	
+	public void remove(int i)
+	{
+		cards.remove(i);
 	}
 	
 

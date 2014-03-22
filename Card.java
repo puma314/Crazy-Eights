@@ -25,7 +25,20 @@ public class Card
 	//function works
 	public String toString()
 	{
-		return (number + " of " + suit );
+		String temp="";
+		if(number==0)
+			temp = "Ace of " + suit;
+		if(number>0 && number<10)
+			temp = (number+1) + " of " + suit;
+		if(number == 10)
+			temp = "Jack of " + suit;
+		if(number == 11)
+			temp = "Queen of " + suit;
+		if(number == 12)
+			temp = "King of " + suit;
+		
+		return temp;
+
 		
 		
 	}
